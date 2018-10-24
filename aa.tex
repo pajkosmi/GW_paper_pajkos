@@ -86,48 +86,58 @@ So far, only the mergers of black holes binaries and a neutron star binary have 
 Accurate prediction of the expected GW signal from CCSNe is key to increasing the likelihood of detection by GW observatories such as aLIGO and VIRGO and will be crucial in our ability to extract physical meaning from a future CCSN GW detection.
 
 CCSNe are routinely observed in the EM window, and the looming prospect of future synoptic surveys such as LSST and ZTF may increase the volume of such data for CCSNe by orders of magnitude.
-Still, until the late nebular phase, which is often too dim to easily observer for distant CCSNe, the EM emission arises from the very outermost layers of the progenitor star and the central core regions, where the explosion is driven, are obscurred. 
+Still, until the late nebular phase, which is often too dim to easily observer for distant CCSNe, the EM emission arises from the very outermost layers of the progenitor star and the central core regions, where the explosion is driven, are obscured. 
 This makes it challenging to connect EM emission from CCSNe directly to the mechanism that powers them.
 Due to their relatively small interaction probabilities with matter, both neutrinos and GWs offer windows through which to peer directly into the heart of a CCSN explosion.  
 Moreover, these observations yield numerous applications both inside and outside of astrophysics: restricting nuclear equations of state, probing theoretical quark-gluon matter within neutron stars, and providing strong field tests for the theory of general relativity--to name a few. \smc{I do not understand what you are trying to say in this sentence.}
 
-When used in conjunction with EM signals, either gravitational waves or neutrino bursts offer
-astrophysicists the opportunity to further constrain the physics of these aforementioned applications.  Yet, never before have all three sources been utilized, simultaneously.  Albeit a rare event, a Galactic, core-collapse supernova (CCSN) offers the perfect opportunity to observe the first ever `trifecta' of astrophysical transients.  With such a wealth of information available within core-collapse gravitational wave signals, accurate time-domain wave forms are vital to the LIGO and VIRGO collaborations.
-\par
-With high performance computing resources (HPC) becoming more accessible, the accuracy to which gravitational wave forms can be calculated is constantly being refined.  Nevertheless, due to the high degree of non-linearity in both Einstein's field equations and the equations of radiation-magnetohydrodynamics, approximations that preserve numerical accuracy become necessary, in order to minimize computational cost.  The conformal flatness condition (CFC) is an effective treatment of gravity that has been implemented.  Within a few percent, CFC accurately produces prebounce and early post bounce signals from CCSN \citep{ott:2007}.  The relativistic effective potential satisfies the solution to hydrostatic equilibrium according to the Tolman-Oppenheimer-Volkoff equation (TOV) \citep{marek:2006}.  Moreover, \citet{rampp:2002} condensed the expression into a compact relativistic potential that is less computationally intensive than CFC.  
-\par
-Historically, research into gravitational wave emission from rotating CCSNe has focused on the bounce and early post-bounce phase of the explosion; these investigations have found that increasing angular momentum of the core leads to a larger strain peak at bounce \citep{muller:1982,moench:1991,yamada:1995,zwerger:1997,dimm:2002,kotake:2003,shibata:2004}.  More recent investigations examine the role of the angular momentum distribution within the supernova progenitor and find it only important in the rapid rotation regime, where the ratio of kinetic to gravitational potential energy ($T/|W|$) $ \gtrsim 8\%$ at bounce \citep{abdik:2014}. In order to examine GW emission at later times, different groups have considered other factors for nonrotating cases---for example, convection in the post shock region \citep{burrows:1996,muller:1997,muller:2004,marek:2009b} and the standing accretion schock instability (SASI) \citep{blondin:2003,blondin:2006,ohnishi:2006,foglizzo:2007,scheck:2008,iwakami:2009,fernandez:2010}.  \citet{moro:2018} investigate late time gravitational wave emission  for only moderate rotational speeds ($\Omega_{core} = 0.2$ rad s$^{-1}$) and a single progenitor mass ($13 M_\odot$).  Also, \citet{pan:2018} investigate the relationship between black hole formation and gravitational wave emission, for a nonrotating 40 $M_\odot$ progenitor.
+Observation of either gravitational waves or neutrino emission from a nearby CCSN, combined with EM observation, would allow us to place unique constraints on the physics of the explosion mechanism and key nuclear physics, such as the neutron star equation of state.  
+There has yet to be a single astrophysical object detected via all three of these messengers.  
+Albeit a rare event, a Galactic CCSN offers the perfect opportunity to observe the first ever multimessenger `trifecta.'  
+In order to increase our chances of ``hearing'' such an event in GWs, and in order to be able to extract the greatest scientific meaning from them, we need accurate predictions for CCSN GW signals from the wide range range of initial conditions that give rise to these stellar explosions.
 
-\par
-In our paper, we present 15 axisymmetric (2D) hydrodynamic simulations.  Our parameter space includes four progenitor masses ranging from $12M_\odot-60M_\odot$ and four integral rotation velocities: $0-3 \text{ rad s}^{-1}$ \citep{Suk:2016}.  We note that while \citet{woosley:2006} observe that only 1\% of massive stars may reach the rapid rotation regime, that in certain, low metallicity cases, angular momentum loss due to stellar winds and magnetic braking is minimal \citep{yoon:2005}.  This fact demonstrates that the likelihood of rapidly rotating, type II, supernova progenitors may be slightly more common than previously thought.  However, when placed in the context of gravitational wave observations, we expect magnetic breaking due to the Taylor-Spruit Dynamo to slow the progenitor rotation \citep{spruit:2002}.  
+Modeling GWs from CCSNe incurs all of the challenges of simulating the CCSN mechanism itself, along with a heightened emphasis on the importance of the general relativistic gravity of the problem. 
+The increased expense of including a fully dynamical spacetime evolution coupled to general relativistic dynamics \citep[cf.][]{ott:2009, ott:2012} can further reduce the size of the parameter space that is feasible to explore. 
+Approximations that maintine sufficient numerical accuracy become necessary in order to reduce computational cost.  
+A common approach for CCSNe, particularly in 2D, is the conformal flatness condition (CFC) approximation wherein the spacial three-metric is obtained approximately from the flat spacetime three-metric.
+CFC has been shown to accurately reproduce prebounce and early post bounce signals from CCSN to within a few percent when compared to direct solutions to Einstein's field equations  \citep{ott:2007}.
+A further approximation, also common in simulation of the CCSN mechanism, is to couple an effective GR gravitational potential to otherwise Newtonian dynamics \citep{rampp:2002, marek:2006, bruenn:2016, oconnor:2018, morozova:2018}.  
+This relativistic effective potential satisfies the solution to hydrostatic equilibrium according to the Tolman-Oppenheimer-Volkoff equation (TOV) \citep{rampp:2002, marek:2006}.
+This approach further reduces the computational expense of CCSN simulations relative to the CFC approach and reproduces fairly accurately gross features of CCSN simulations \citep{marek:2006, muller:2012}. 
+
+Early research into gravitational wave emission from CCSNe focused on the bounce and early post-bounce phase of the explosion in rotating progenitors.
+These investigations found that increasing angular momentum of the core leads to a larger strain peak at bounce \citep{muller:1982,moench:1991,yamada:1995,zwerger:1997,dimm:2002,kotake:2003,shibata:2004}.  
+More recent investigations examine the role of the angular momentum distribution within the supernova progenitor and find it only important in the rapid rotation regime, where the ratio of kinetic to gravitational potential energy ($T/|W|$) $ \gtrsim 8\%$ at bounce \citep{abdik:2014}. In order to examine GW emission at later times, different groups have considered other factors for nonrotating cases---for example, convection in the post shock region \citep{burrows:1996,muller:1997,muller:2004,murphy:2009,marek:2009b} and the standing accretion shock instability (SASI) \citep{blondin:2003,blondin:2006,ohnishi:2006,foglizzo:2007,scheck:2008,iwakami:2009,fernandez:2010}.  \citet{moro:2018} investigate late time gravitational wave emission for moderate rotational speeds ($\Omega_{core} = 0.2$ rad s$^{-1}$) for a single progenitor mass ($13 M_\odot$).  \citet{pan:2018} investigate the relationship between black hole formation and gravitational wave emission, for a nonrotating 40 $M_\odot$ progenitor.
+ 
+
+In this work, we present 15 axisymmetric (2D) neutrino radiation-hydrodynamic CCSN simulations.  
+Our parameter space spans four progenitor masses ranging from $12M_\odot-60M_\odot$ \citep{Suk:2016} and four peak core rotation speeds: $0-3 \text{ rad s}^{-1}$.  
+We examine the variation in key features of the GW emission from CCSN at these different masses and rotation rates.
+Rapid rotation rates up to 2 and 3 rad s$^{-1}$ are likely rare in typical massive stars at solar metallicity due to efficient transport and loss of angular momentum \citep{heger:2005}.
+While \citet{woosley:2006} observe that only 1\% of massive stars may reach the rapid rotation regime, that in certain, low metallicity cases, angular momentum loss due to stellar winds and magnetic braking is minimal \citep{yoon:2005}.  Thus, there is some likelihood of rapidly rotating supernova progenitors in the mass range we explore.  
+
+%However, when placed in the context of gravitational wave observations, we expect magnetic breaking due to the Taylor-Spruit Dynamo to slow the progenitor rotation \citep{spruit:2002}.  
 
 %place in context of rotation
 %TS dynamo breaks core -->0-1 regime
 %GW observers should look here
 %Drop in low frequencies between 0->1 rad/s
 
-\par What is unique about our study is that, on top of the breadth parameter space covered, we consider the role of rotation into the late post bounce regime (300 ms pb).  We find that rotation restricts the dipole nature of SASI by centrifugally flattening the progenitor poles, thereby leaving it slightly oblate. Likewise, the positive angular momentum gradient created by the rotation stabilizes the post shock convection via the Solberg-H{\o}iland instability criterion \citep{endal:1978,fryer:2000}.  Not only are the SASI and post shock convection contributions to the gravitational radiation diminished, but the PNS vibrational signals are damped because of reduced downflow of matter onto the PNS surface.  \par 
+In addition to the breadth parameter space we cover, we also explore the role of rotation into the late post bounce regime, up to 300 ms postbounce.  
+We find that rotation restricts the dipole nature of SASI by centrifugally flattening the progenitor poles, thereby leaving it slightly oblate. Likewise, the positive angular momentum gradient created by the rotation stabilizes the post shock convection via the Solberg-H{\o}iland instability criterion \citep{endal:1978,fryer:2000}.  Not only are the SASI and post shock convection contributions to the gravitational radiation diminished, but the PNS vibrational signals are damped because of reduced downflow of matter onto the PNS surface.  
+This results in a ``muting'' of the GW signal with increasing rotation speeds.
+While the origins of this muting are physical, such behavior may not be seen in full 3D simulations of CCSNe due to the appearance of spiral modes of the SASI and low $T/|W|$ instabilities that can excite quadrupole deformations of the PNS. 
 
-\begin{table}[t]
-\begin{tabular}{c|c|c}
-Progenitor Mass [$M_\odot$] & Compactness & \textit{A}[cm] \\
-\hline
-
-12  & 0.0738 &         8.123e+07             \\
-20  & 0.2785 &         1.021e+08            \\
-40  & 0.5341 &         1.282e+08           \\
-60  & 0.1708 &         9.112e+07          
-\end{tabular}
-\caption{Listed values for ZAMS mass, compactness calculated from \citet{Suk:2016}, and differential rotation parameter \textit{A}.}
-\label{table:compact}
-\end{table}
+We use the GR effective monopole potential of \citet{marek:2006} supplemented by a Newtonian multipole gravity solver with maximum spherical harmonic order $l=16$ \citep{couch:2013a, oconnor:2018}.
+In order to validate this approximate approach for studying GWs from CCSNe, we compare our results to those of \citet{richers:2017}, who use a CFC GR approach.  We find that our simulations produce nearly identical GW bounce signals to those of \citet{richers:2017}.  
 
 
 
-As our gravitational treatment approximates the mass distribution as an $l=16$ multipole, under the relativistic effective potential, our work also serves as a code comparison to general relativistic treatments of gravity \citep{richers:2017}.  We report our simulations produce nearly identical GW bounce signals to those that impose general relativistic gravity.  \par 
-This study also serves as a cautionary tale when considering initial angular momentum distributions.  When applying rotational velocities to different radial, density profiles, they are naturally endowed with different amounts of angular momentum.  This difference can lead to modified gravitational wave bounce signals.    To avoid this discrepancy certain groups have adopted assigning specific angular momentum distributions \citep[eg.][]{oconnor:2011}.  Nevertheless, we adopt this convention for the sake of code comparison to other works that have employed similar angular velocity prescriptions \citep{richers:2017}.
-\par
-Our paper is laid out as follows:  In Section \ref{sec:method} we review our methods and treatment of microphysics within our \texttt{FLASH} simulations.  In Section \ref{sec:results} we address which progenitors explode, verify our gravitational treatment, analyze our simulated gravitational wave signals, and discuss detectability.  In Section \ref{sec:summary} we conclude and discuss.
+
+\smc{I'm not sure this paragraph is needed. At least not here in the Intro.} This study also serves as a cautionary tale when considering initial angular momentum distributions.  When applying rotational velocities to different radial, density profiles, they are naturally endowed with different amounts of angular momentum.  This difference can lead to modified gravitational wave bounce signals.    To avoid this discrepancy certain groups have adopted assigning specific angular momentum distributions \citep[eg.][]{oconnor:2011}.  Nevertheless, we adopt this convention for the sake of code comparison to other works that have employed similar angular velocity prescriptions \citep{richers:2017}.
+
+
+This paper is organized as follows:  In Section \ref{sec:method} we present our methods and treatment of microphysics within our \texttt{FLASH} simulations.  In Section \ref{sec:results} we address which progenitors explode, verify our gravitational treatment, analyze our simulated gravitational wave signals, and discuss detectability.  In Section \ref{sec:summary} we conclude and discuss. \smc{This preview paragraph is a bit too terse. Add verbage.}
 
 %__________________________________________________________________
 
@@ -146,6 +156,19 @@ Neutrinos play a vital role in core-collapse supernovae.  Directly after collaps
 
 \subsection{Treatment of Rotation}
 
+\begin{table}[t]
+\begin{tabular}{c|c|c}
+Progenitor Mass [$M_\odot$] & Compactness & \textit{A}[cm] \\
+\hline
+
+12  & 0.0738 &         8.123e+07             \\
+20  & 0.2785 &         1.021e+08            \\
+40  & 0.5341 &         1.282e+08           \\
+60  & 0.1708 &         9.112e+07          
+\end{tabular}
+\caption{Listed values for ZAMS mass, compactness calculated from \citet{Suk:2016}, and differential rotation parameter \textit{A}.}
+\label{table:compact}
+\end{table}
 
 
 Our models initially rotate according the rotation relation, 
@@ -319,7 +342,6 @@ We reveal a unique rotational effect on the late time GW signal.  \textit{We not
 
 While our approximations have allowed us to make large sweeps of parameter space, they leave room for us to include more robust microphysics.  In an ideal situation, we would compute 3D simulations, include full GR, magnetohydrodynamics, and GR Boltzmann neutrino transport that incorporates velocity dependence and inelastic electron scattering.  These additions would allow for more accurate gravitational wave forms and allow other phenomena to occur, for example the $m\ne 0$ modes of the SASI.
 
-
 \acknowledgements
 
 We would like to thank Evan O'Connor for his insightful perspective, as well as Jess McIver for pointing us to the aLIGO sensitivity curves.  This work was supported under the Michigan State University Distinguished Fellowship. 
@@ -330,7 +352,7 @@ We would like to thank Evan O'Connor for his insightful perspective, as well as 
 %\bibliographystyle{aasjournal}%name of .bst file
 
 %\bibliography{masterDB, ref} %name of .bib file
-\bibliography{ref}
+\bibliography{aa}
 
 %-------------------------------------------------------------------
 
