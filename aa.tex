@@ -24,9 +24,10 @@
 %\usepackage{subcaption}
 %\usepackage[utf8]{inputenc}
 %\usepackage[english]{babel}
-\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xspace}
 
 \newcommand{\smc}[1]{{\color{blue}$\blacksquare$~\textsf{[SMC: #1]}}}
+\newcommand{\Msun}{\ensuremath{\mathrm{M}_\odot}\xspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{txfonts}
@@ -150,17 +151,22 @@ This paper is organized as follows:  In Section \ref{sec:method} we present our 
 
 \section{Methods and Simulation Setup}
 \label{sec:method}
-We run 2-D simulations with \texttt{FLASH} version 4 \footnote{http://flash.uchicago.edu/site/}, a multiscale, multiphysics code, made available through the FLASH Center for computational science. \citep{fryxell:2000,dubey:2009}.  We employ a modified relativistic, effective potential, treating the mass distribution as an $l=16$ multipole, incorporating the multipole Poisson solver of \citet{couch:2013a}, where $Y_l^m$ refers to the spherical harmonics.  We utilize the SFHo equation of state (EOS) throughout our 15 simulations \citep{steiner:2013}.  Our grid setup is a 2D cylindrical construction with the PARAMESH (v.4-dev) library for adaptive-mesh-refinement (AMR) \citep{macneice:2000}.  The outer radial boundary is $1.0 \times 10^4$ km, with nine levels of refinement.  \par
+We utilize the \texttt{FLASH} (version 4) multiscale, multiphysics adaptive mesh refinement (AMR) simulation framework for our simulations \citep{fryxell:2000,dubey:2009}.\footnote{http://flash.uchicago.edu/site/}  We employ a modified relativistic, effective potential \citep{marek:2006, oconnor:2018} incorporated into the multipole Poisson solver of \citet{couch:2013a}, where we retain spherical harmonic orders up through 16.   We utilize the SFHo equation of state (EOS) in all of our 15 simulations \citep{steiner:2013}.  Our grid setup is a 2D cylindrical geometry with the PARAMESH (v.4-dev) library for AMR  \citep{macneice:2000}.  The outer radial boundary is $1.0 \times 10^4$ km, with nine levels of refinement, yielding a finest grid spacing of about 0.5 km. \smc{Mike: double-check this.]}
+The maximum allowed level of refinement is decreased as a function of spherical radius, r, in order to maintain a resolution aspect ratio, $\Delta x_i / r$, of about 0.01, corresponding approximately to an ``angular'' resolution of 0.5 degrees.
+
 %M1 section
-Neutrinos play a vital role in core-collapse supernovae.  Directly after collapse, they provide an avenue through which the protoneutron star can cool.  As the shock propagates outwards, they also provide heating in the gain region that is crucial in reviving the explosion, according to the neutrino heating mechanism.  The opacity of the material to these outflowing neutrinos also must be carefully accounted for in an energy dependent way.  We incorporate a multidimensional, multispecies, energy dependent, two moment scheme with an analytic closure, or the so called M1 scheme.  Our implementation is based on \citet{oconnor:2015}, \citet{shibata:2011}, and \citet{cardall:2013}.  A detailed outline of the M1 implementation in \texttt{FLASH} is in \citet{oconnor:2018}.  In order to reduce computational cost to explore the wide parameter space for our study, we neglect velocity dependent neutrino transport and do not account for inelastic, neutrino-electron scattering.
+Neutrinos play a vital role in core-collapse supernovae.  Directly after collapse, they provide an avenue through which the protoneutron star can cool.  As the shock propagates outwards, they also provide heating in the gain region that is crucial in reviving the explosion, according to the neutrino heating mechanism.  The opacity of the material to these outflowing neutrinos also must be carefully accounted for in an energy dependent way.  We incorporate a multidimensional, multispecies, energy dependent, two moment scheme with an analytic closure, or the so called M1 scheme.  Our implementation is based on \citet{oconnor:2015}, \citet{shibata:2011}, and \citet{cardall:2013}.  A detailed outline of the M1 implementation in \texttt{FLASH} is in \citet{oconnor:2018}.  In order to reduce computational cost to explore the wide parameter space for our study, we neglect velocity dependent neutrino transport and do not account for inelastic neutrino-electron scattering.
+We use 12 energy bins spaced logarithmically and the full set of rates and opacities we use is described in \citet{oconnor:2017a}. 
+
+We use the 12-, 20-, 40-, and 60-\Msun non-rotating, solar-metallicity progenitors models from \citet{Suk:2016} for the present work.
 
 \subsection{Treatment of Rotation}
+
 
 \begin{table}[t]
 \begin{tabular}{c|c|c}
 Progenitor Mass [$M_\odot$] & Compactness & \textit{A}[cm] \\
 \hline
-
 12  & 0.0738 &         8.123e+07             \\
 20  & 0.2785 &         1.021e+08            \\
 40  & 0.5341 &         1.282e+08           \\
@@ -170,13 +176,22 @@ Progenitor Mass [$M_\odot$] & Compactness & \textit{A}[cm] \\
 \label{table:compact}
 \end{table}
 
-
-Our models initially rotate according the rotation relation, 
+The progenitor models we use are evolved without rotation.
+At the start of core collapse, when we map the 1D models into our 2D grid, we apply an artificial rotation profile,
 \begin{equation}
-    \Omega'(\omega) = \Omega \bigg[1 + \bigg(\frac{\omega}{A}\bigg)^2 \bigg]^{-1}, 
+    \Omega(r) = \Omega_0 \bigg[1 + \bigg(\frac{r}{A}\bigg)^2 \bigg]^{-1}, 
     \label{eq:omega}
 \end{equation}
-where $\omega$ is the distance from the rotation axis, $\Omega$ is the initial rotational velocity of the star, and $A$ is the differential rotation parameter \citep{eriguchi:1984}.  For large values of $A$, the stellar rotation is nearly solid body, whereas small values of $A$ lead to a differential profile.  \par Historically, $A$ values have been explored in parameter space, or a single value is chosen for different progenitor masses.  Motivated by stellar compactness, we choose unique $A$ values for each progenitor mass.  In order to choose an appropriate $A$ value, we begin with radial, rotation profiles from \citet{heger:2005} of 12, 15, 20, 25, and 35 $M_{\odot}$ stars, with various angular momentum transport parameters.  Using the \texttt{curve\_fit} function (in the \texttt{scipy.optimize} library) available in \texttt{Python}, we obtain $A$ values that correspond to the most accurate fits of Equation (\ref{eq:omega}) to 20 of \citeauthor{heger:2005}'s \citeyear{heger:2005} rotation profiles.  Figure \ref{fig:ovsr} displays the radial, rotation profile for five of the aforementioned progenitors, compared to our implementation of Equation (\ref{eq:omega}), with the appropriate $A$ value.
+\smc{In order to be consistent with previous work, I have taken away the prime and added a 0 to the omega's. Please update the figures accordingly and while you're at it, convert the figures to pdf's.}
+where $r = \sqrt{R^2 + z^2}$ is the spherical radius for a given cylindrical radius $R$ and altitude $z$, $\Omega_0$ is the central angular speed of the star, and $A$ is the differential rotation parameter \citep{eriguchi:1984}.  For large values of $A$, the stellar rotation is nearly solid body, whereas small values of $A$ lead to a more differential profile. 
+The {\it linear} rotational velocity is then calculated by multiplying the angular speed with the distance from the rotation axis, $v_\phi (R, z) = R \Omega (r) $. 
+
+The precise rotation rates and profiles of massive stellar cores at collapse is uncertain.
+Previous work \citep[e.g.,][]{abdik:2014} treated the differential rotation parameter $A$ as a free parameter and explored the impact of its variation.
+Examining the stellar evolution models of \citet{heger:2005}, which include angular momentum transport due to the Tayler-Spruit dynamo \citep{spruit:2002}, we find that $A$ is strongly determined by the {\it compactness} \citep{oconnor:2011} of the stellar core.
+In order to demonstrate this, we fit the rotation profiles of the 20 progenitors models from \citet{heger:2005} to Equation (\ref{eq:omega}) in order to determine the best fit $A$.
+The models of \citet{heger:2005} include stars of ZAMS masses 12, 15, 20, 25, and 35 $M_{\odot}$, with various angular momentum transport parameters and initial ZAMS rotation rates.  
+Using the \texttt{curve\_fit} function (in the \texttt{scipy.optimize} library) available in \texttt{Python}, we obtain $A$ values that correspond to the most accurate fits of Equation (\ref{eq:omega}) to the rotation profiles of these models.  Figure \ref{fig:ovsr} displays the radial, rotation profile for five of the aforementioned progenitors, compared to our implementation of Equation (\ref{eq:omega}), with the best fit $A$ value.
 
 
 \begin{figure}[t]
@@ -186,11 +201,20 @@ where $\omega$ is the distance from the rotation axis, $\Omega$ is the initial r
     \label{fig:a_vs_comp}
 \end{figure}
 
-\par The 20 differential rotation parameters are then compared to the compactness, $\xi$, of each progenitor.  We define compactness similar to \citet{oconnor:2011}, 
+The core compactness as introduced by \citet{oconnor:2011} is defined as,
 \begin{equation}
-    \xi = \left.\frac{M/M_{\odot}}{R(M_{bary}=M)/1000 \text{km}}\right\vert_{collapse} ,
+    \xi = \left.\frac{M/M_{\odot}}{R(M_\mathrm{bary}=M)/1000 \text{km}}\right\vert_\mathrm{collapse} ,
 \end{equation} 
-where we choose $M = 2.5 M_\odot$, and $R(M_{bary}=M) $ as the radius at which the internal baryonic mass is $2.5M_\odot$, at collapse.  A linear relation is then obtained of $A$ vs. $\xi$ (blue stars in Figure \ref{fig:a_vs_comp}).  By then applying the calculated compactness values from the four \citet{Suk:2016} progenitors, we determine the  optimal $A$ values (orange circles in Figure \ref{fig:a_vs_comp}).  Likewise, the respective progenitor ZAMS mass is labeled in units of $M_\odot$ for each corresponding point in Figure \ref{fig:a_vs_comp}.  For a full list of the progenitor masses, compactness values, and A's, see Table ~\ref{table:compact}.  As a note, we choose to omit the 40 $M_\odot$ progenitor at $\Omega = 3$ rad s$^{-1}$ from our analysis with a physically motivated rationale.  The $\xi$ value of this progenitor is nearly double that of the 20 $M_\odot$ progenitor (the next closest compactness value).  This fact displays that the 40 $M_\odot$ has vastly more mass within a 2.5 $M_\odot$ mass radius compared to the other progenitors and will therefore be endowed with more angular momentum.  We outline in greater detail the resulting distortion of the GW signal in Section \ref{sec:results}.  Thus, in order to preserve a maximum upper limit on the angular momentum (within a 1.75 $M_\odot$ mass radius) of $\sim 2.4\times 10^{49}$ erg s, we omit the 40 $M_\odot$ from our analysis.  \\
+where we choose $M = 2.5 M_\odot$, and $R(M_{bary}=M) $ as the radius at which the internal baryonic mass is $2.5M_\odot$, at collapse.  
+Figure \ref{fig:a_vs_comp} shows the compactness parameters from the \citet{heger:2005} models (blue stars) plotted against their best fit $A$ values.
+A clear linear relation exists between $A$ and $\xi$.  
+In essence, for rotating cores, these two parameters are the same thing.
+Using this relationship, we calculate optimal $A$ values for the four \citet{Suk:2016} progenitors we use in this work (orange circles in Figure \ref{fig:a_vs_comp}).  
+The full list of progenitor masses, compactness values, and A's we use is given in Table ~\ref{table:compact}.  
+As a note, we choose to omit the 40 $M_\odot$ progenitor at $\Omega = 3$ rad s$^{-1}$ from our following analysis with a physically motivated rationale.  The $\xi$ value of this progenitor is nearly double that of the 20 $M_\odot$ progenitor (the next closest compactness value).  This fact displays that the 40 $M_\odot$ has a much larger differential rotation parameter compared to the other progenitors, resulting in a nearly-solid body rotation of the core. This endows the core in the 40-\Msun model with drastically more angular momentum than the other models.  
+So much so, in fact, core bounce is significantly delayed and occurs at much lower central densities due to the strong centrifugal barrier.
+We outline in greater detail the resulting distortion of the GW signal in Section \ref{sec:results}.  Thus, in order to preserve a maximum upper limit on the angular momentum (within a 1.75 $M_\odot$ mass radius) of $\sim 2.4\times 10^{49}$ erg s, we omit the 40 $M_\odot$ from our analysis.  \\
+
 
 % 1) 12,15,20,25,35 fit XXX profiles to toy model
 % 2) plot optimal A values to compactness from XXX
@@ -200,12 +224,7 @@ where we choose $M = 2.5 M_\odot$, and $R(M_{bary}=M) $ as the radius at which t
 
 %
 %______________________________________________________________
-\begin{figure}[t]
-    \centering
-    \includegraphics[scale=0.40]{figures/M1_shock_mass.png}
-    \caption{Shock radius evolution of the four  progenitor models versus time (post bounce).  Similar to \citet{couch:2013b}, we define a successful explosion as the average shock front exceeding 400 km. }
-    \label{fig:shock}
-\end{figure}
+
 
 \section{Results}
 \label{sec:results}
@@ -226,7 +245,15 @@ where $I_{zz}$ is the mass quadrupole moment, $G$ is the gravitational constant,
 where $i=\sqrt{-1}$.
 
 \subsection{Rotation's Influence on Explosions}
-\par With respect to successful supernova explosions, we report only two nonrotating progenitors (20 $M_\odot$ \& 60 $M_\odot$) explode, where we define a successful explosion as the average shock exceeding 400 km and not receding below that value.  From photodissociation to entropy increases due to convection, the propagation of the outward shock front involves a variety of microphysics; thus, the effect of rotation on a successful explosion is not a simple one.  In one respect, one expects greater centrifugal support to lead to a larger shock front.  However, there are two factors that inhibit the shock from propagating outward.  The first is the inhibited convection due to the positive angular momentum gradient within the progenitor.  By inhibiting convection in the gain region, the shock front loses vital heating that would help power a successful explosion.  The  second rotational element that inhibits explosions is the lack of neutrino production.  A centrifugally supported, rotating progenitor will have a slower matter infall during collapse.  As the infalling material has less kinetic energy, it will create a less dense PNS.  Furthermore, a less energetic infall will in turn create a weaker bounce and shock front.  The combination of a less dense PNS, paired with less photodissociation, due to a weaker shock, creates an unfavorable scenario for a supernova explosion that is revived by neutrino heating.  Hence, the introduction of rotation involves competing forces that can enhance or diminish the shock.  Figure \ref{fig:shock} illustrates the average shock radius evolution versus time (post bounce). Clearly this evolution is not monotonic with increasing rotational velocity.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=0.40]{figures/M1_shock_mass.png}
+    \caption{Shock radius evolution of the four  progenitor models versus time (post bounce).  Similar to \citet{couch:2013b}, we define a successful explosion as the average shock front exceeding 400 km. }
+    \label{fig:shock}
+\end{figure}
+
+With respect to successful supernova explosions, we report only two nonrotating progenitors (20 $M_\odot$ \& 60 $M_\odot$) explode, where we define a successful explosion as the average shock exceeding 400 km and not receding below that value.  From photodissociation to entropy increases due to convection, the propagation of the outward shock front involves a variety of microphysics; thus, the effect of rotation on a successful explosion is not a simple one.  In one respect, one expects greater centrifugal support to lead to a larger shock front.  However, there are two factors that inhibit the shock from propagating outward.  The first is the inhibited convection due to the positive angular momentum gradient within the progenitor.  By inhibiting convection in the gain region, the shock front loses vital heating that would help power a successful explosion.  The  second rotational element that inhibits explosions is the lack of neutrino production.  A centrifugally supported, rotating progenitor will have a slower matter infall during collapse.  As the infalling material has less kinetic energy, it will create a less dense PNS.  Furthermore, a less energetic infall will in turn create a weaker bounce and shock front.  The combination of a less dense PNS, paired with less photodissociation, due to a weaker shock, creates an unfavorable scenario for a supernova explosion that is revived by neutrino heating.  Hence, the introduction of rotation involves competing forces that can enhance or diminish the shock.  Figure \ref{fig:shock} illustrates the average shock radius evolution versus time (post bounce). Clearly this evolution is not monotonic with increasing rotational velocity.
 
  \begin{figure}[t]
     \centering
