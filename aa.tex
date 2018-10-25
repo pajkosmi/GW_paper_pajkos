@@ -54,6 +54,7 @@
 \author{Kuo-Chuan Pan}
 \affiliation{Department of Physics and Institute of Astronomy, National Tsing Hua University, Hsinchu 30013, Taiwan}
 
+\author{Evan O'Connor}
 
 \received{\today}
 %\revised{September 27, 2016}
@@ -374,13 +375,13 @@ Before the PNS g-mode signal is completely muted, as rotation gradually increase
 
 We reveal a unique rotational effect on the late time GW signal.  \textit{We notice that the nonrotating progenitors all produce low frequency signals ($\sim 30$ Hz) that are inaudible, whereas the progenitors with larger angular velocities produce measureable GW signals for the aLIGO and KAGRA detectors.}  This observation gives gravitational wave astronomers one of the first features to investigate when trying to extract angular momentum information from late time gravitational waves.  We postpone asserting quantitative relations between low frequency emission and progenitor angular momentum until we incorporate more detailed microphysics into the \texttt{FLASH} framework.
 
-As with any numerical calculation, resolution has a definite impact on the outcome of a simulation.  To place our simulations in the context of current work in the field, we utilize a 
+As with any numerical calculation, resolution has a definite impact on the outcome of a simulation.  To place our simulations in the context of current work in the field, we utilize a 2D cylindrical geometry.  Our maximum outer, radial boundary is $1.0 \times 10^4$ km, with nine levels of refinement, yielding a finest grid spacing of 0.65 km.  The rotating model of \citet{andresen:2018} uses a Yin-Yang grid, with two grid patches of initial resolution  400, 56, and 144 zones in the radial, polar, and azimuthal direction, respectively.  \citet{morozova:2018}  has a finest radial spacing of 0.5 km and a varying radial resolution from $\sim 0.65^o-0.95^o$
 
-While our approximations have allowed us to make large sweeps of parameter space, they leave room for us to include more robust microphysics.  In an ideal situation, we would compute 3D simulations, include full GR, magnetohydrodynamics, and GR Boltzmann neutrino transport that incorporates velocity dependence and inelastic electron scattering.  These additions would allow for more accurate gravitational wave forms and allow other phenomena to occur, for example the $m\ne 0$ (spiral) modes of the SASI.  More specifically, \citet{andresen:2018} recently highlight the rotational effects on GWs in 3D.  Inherent to the 3D nature of their study, they find the strongest GW amplitudes at high rotation velocities due to these spiral modes.  The 2D geometry of our study, however, allows us to observe muting of the convective signal, without interference from $m\ne 0$ modes, as we extend beyond the case of a single rotational velocity.
+While our approximations have allowed us to make large sweeps of parameter space, they leave room for us to include more robust microphysics.  In an ideal situation, we would compute 3D simulations, include full GR, magnetohydrodynamics, and GR Boltzmann neutrino transport that incorporates velocity dependence and inelastic electron scattering.  These additions would allow for more accurate gravitational wave forms and allow other phenomena to occur, for example the $m\ne 0$ (spiral) modes of the SASI.  More specifically, \citet{andresen:2018} recently highlight the rotational effects on GWs in 3D.  Inherent to the 3D nature of their study, they find the strongest GW amplitudes at high rotation velocities due to these spiral modes.  The 2D geometry of our study, however, allows us to observe muting of the convective signal, without interference from $m\ne 0$ modes, as we extend beyond the case of a single rotational velocity.  Nonetheless, for future GW studies, 3D simulations remain the gold standard, by allowing for hydrodynamic flows to develop in all degrees of freedom. 
 
 \acknowledgements
 
-We would like to thank Evan O'Connor for his insightful perspective, as well as Jess McIver for pointing us to the aLIGO sensitivity curves.  This work was supported under the Michigan State University Distinguished Fellowship. 
+We would like to thank Jess McIver for pointing us to the aLIGO sensitivity curves.  This work was supported under the Michigan State University Distinguished Fellowship. 
 
     \software{\href{https://www.scipy.org/}{SciPy}}
     
