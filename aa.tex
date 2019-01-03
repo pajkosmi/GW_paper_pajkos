@@ -88,7 +88,7 @@
 
 Core-collapse supernovae (CCSNe) became the first extra-solar multi-messenger object when SN 1987A was detected by the Kamiokande II experiment and Irvine-Michigan-Brookhaven (IMB) water cherenkov detector in 1987 \citep{hirata:1987,bionta:1987} along with concurrent electromagnetic observations \citep[cf.][]{arnett:1989}. With the recent detection of a neutron star merger--GW170817--in both photons and gravitational waves (GWs) by the LIGO and VIRGO collaborations \citep{abbott:2016} we have entered the era of {\it GW} multimessenger astronomy.  
 So far, only the mergers of black holes binaries and a neutron star binary have been detected in GWs, but CCSNe are also predicted to be prodigious GW sources, though not quite as ``loud'' as compact object binary mergers.
-Accurate predictions of the expected GW signal from CCSNe is key to increasing the likelihood of detection by GW observatories such as aLIGO and VIRGO and will be crucial in our ability to extract physical meaning from a future CCSN GW detection.%%cite?
+Accurate predictions of the expected GW signal from CCSNe is key to increasing the likelihood of detection by GW observatories such as aLIGO and VIRGO and will be crucial in our ability to extract physical meaning from a future CCSN GW detection\citep{abdik:2014,gossan:2016}.
 
 CCSNe are routinely observed in the electromagnetic (EM) window, and the data collecting power of synoptic surveys such as the Large Synoptic Survey Telescope (LSST) and Zwicky Transient Facility (ZTF) may increase the volume of such data for CCSNe by orders of magnitude \citep{ivezic:2008,bellm:2019}.
 Still, until the late nebular phase, which is often too dim to easily observed for distant CCSNe, the EM emission arises from the very outermost layers of the progenitor star and the central core regions, where the explosion is driven, are obscured. 
@@ -110,16 +110,18 @@ A further approximation, also common in simulations of the CCSN mechanism, is to
 This relativistic effective potential empirically satisfies the solution to hydrostatic equilibrium according to a modified Tolman-Oppenheimer-Volkoff equation (TOV) \citep{rampp:2002, marek:2006}.
 This approach further reduces the computational expense of CCSN simulations relative to the CFC approach and reproduces fairly accurately gross features of CCSN simulations \citep{marek:2006, muller:2012,oconnor:2018}.  One such important feature in the early post bounce phase is prompt convection.
 
-After the infalling matter from collapse reaches nuclear densities, the core nuclei dissolve into nucleons and, eventually, the strong force becomes repulsive, halting the material infall.  On the time scale of tens of microseconds, the subsonic inner core encounters the supersonic outer core, forming a shock front.  As this shock front photodissociates overlying material and releases an enormous neutrino flux, it leaves behind a negative entropy gradient \citep{mazurek:1982,bruenn:1985,bruenn:1989}.  This scenario is unstable according to the Ledoux criterion, causing prompt convection in the post shock region \citep{burrows:1992}, therefore creating an associated emission of gravitational radiation \citep{marek:2009b,ott:2009}.  Early research into GW emission from CCSNe focused on the bounce and early post bounce phase of the explosion in rotating progenitors.
+After the infalling matter from collapse reaches nuclear densities, the core nuclei dissolve into nucleons and, eventually, the strong force becomes repulsive, halting the material infall.  On the time scale of tens of microseconds, the subsonic inner core encounters the supersonic outer core, forming a shock front.  As this shock front photodissociates overlying material and releases an enormous neutrino flux, it leaves behind a negative entropy gradient \citep{mazurek:1982,bruenn:1985,bruenn:1989}.  This scenario is unstable according to the Ledoux criterion, causing prompt convection in the post shock region \citep{burrows:1992}, therefore creating an associated emission of gravitational radiation \citep{marek:2009b,ott:2009}.  
+
+Early research into GW emission from CCSNe focused on the bounce and early post bounce phase of the explosion in rotating progenitors.
 These investigations found that increasing the angular momentum of the core leads to a larger strain peak at bounce \citep{muller:1982,moench:1991,yamada:1995,zwerger:1997,dimm:2002,kotake:2003,shibata:2004}.  
-More recent investigations of rotating core collapse examine the role of the angular momentum distribution within the supernova progenitor and find it only important in the rapid rotation regime, where the ratio of kinetic to gravitational potential energy ($T/|W|$) $ \gtrsim 8\%$ at bounce \citep{abdik:2014}. In order to examine GW emission at later times, different groups have considered other factors for nonrotating cases---for example, convection in the post shock region \citep{burrows:1996,muller:1997,muller:2004,murphy:2009,marek:2009b} and the standing accretion shock instability (SASI) \citep{blondin:2003,blondin:2006,ohnishi:2006,foglizzo:2007,scheck:2008,iwakami:2009,fernandez:2010}.  \citet{moro:2018} investigate late time GW emission for moderate rotational speeds ($\Omega_{\mathrm{core}} = 0.2$ rad s$^{-1}$) for a single progenitor mass ($13 M_\odot$).  \citet{pan:2018}, \citet{kuroda:2018}, and \citet{ott:2011} investigate the relationship between black hole formation and GW emission, for a nonrotating 40 $M_\odot$, nonrotating  70 $M_\odot$, and  a rotating 75 $M_\odot$ progenitor, respectively.
+More recent investigations of rotating core collapse examine the role of the angular momentum distribution within the supernova progenitor and find it only important in the rapid rotation regime, where the ratio of kinetic to gravitational potential energy ($T/|W|$) $ \gtrsim 8\%$ at bounce \citep{abdik:2014}. In order to examine GW emission at later times, different groups have considered other factors for nonrotating cases---for example, convection in the post shock region \citep{burrows:1996,muller:1997,muller:2004,murphy:2009,marek:2009b} and the standing accretion shock instability (SASI) \citep{blondin:2003,blondin:2006,ohnishi:2006,foglizzo:2007,scheck:2008,iwakami:2009,fernandez:2010}.  \citet{moro:2018} investigate late time GW emission for moderate rotational speeds ($\Omega_{\mathrm{core}} = 0.2$ rad s$^{-1}$) for a single progenitor mass ($13 M_\odot$).  \citet{pan:2018}, \citet{kuroda:2018}, and \citet{ott:2011} investigate the relationship between black hole formation and GW emission, for a nonrotating 40 $M_\odot$, nonrotating  70 $M_\odot$, and  a rotating 75 $M_\odot$ progenitor, respectively.  These works also find stronger GW emission at bounce with increased progenitor angular momentum and loud late time GW emission for nonrotating CCSNe.
  
 
 In this work, we present 15 axisymmetric (2D) neutrino radiation-hydrodynamic CCSN simulations.  
 Our parameter space spans four progenitor masses ranging from $12\,M_\odot-60\,M_\odot$ \citep{Suk:2016} and four peak core rotation speeds: $0-3 \text{ rad s}^{-1}$.  
 We examine the variation in key features of the GW emission from CCSN at these different masses and rotation rates.
 Rapid rotation rates up to 2 and 3 rad s$^{-1}$ are likely rare in typical massive stars at solar metallicity due to efficient transport and loss of angular momentum \citep{heger:2005}.
-While \citet{woosley:2006} observe that only 1\% of massive stars may reach the rapid rotation regime, that in certain, low metallicity cases, angular momentum loss due to stellar winds and magnetic braking is minimal \citep{yoon:2005}.  Thus, there is some likelihood of rapidly rotating supernova progenitors in the mass range we explore.  
+While \citet{woosley:2006} observe that only 1\% of massive stars may reach the rapid rotation regime, there are high uncertainties in the stellar mass loss and magnetic braking calculations CITE.  Thus, there is some likelihood of rapidly rotating supernova progenitors in the mass range we explore.  
 
 %However, when placed in the context of gravitational wave observations, we expect magnetic breaking due to the Taylor-Spruit Dynamo to slow the progenitor rotation \citep{spruit:2002}.  
 
@@ -129,32 +131,25 @@ While \citet{woosley:2006} observe that only 1\% of massive stars may reach the 
 %Drop in low frequencies between 0->1 rad/s
 
 In addition to the breadth of parameter space we cover, we also explore the role of rotation up to 300 ms post bounce.  
-We find that rotation restricts the dipole nature of SASI by centrifugally flattening \textcolor{red}{the shock at} the progenitor poles, thereby leaving it slightly oblate. Likewise, the positive angular momentum gradient created by the rotation stabilizes the post shock convection via the Solberg-H{\o}iland stability criterion \citep{endal:1978,fryer:2000}.  Not only are the SASI and post shock convection contributions to the gravitational radiation diminished, but the \textcolor{red}{protoneutron star (PNS)} vibrational signals are damped because of \textcolor{red}{less turbulent} downflow of matter onto the PNS surface.  
+We find that rotation restricts the growth of SASI by centrifugally flattening the shock, leaving it slightly oblate. Likewise, the positive angular momentum gradient created by the rotation stabilizes the post shock convection according to the Solberg-H{\o}iland stability criterion \citep{endal:1978,fryer:2000}.  Not only are the SASI and post shock convection contributions to the gravitational radiation diminished, but the protoneutron star (PNS) vibrational signals are damped because of less turbulent downflow of matter onto the PNS surface.  
 This results in a ``muting'' of the GW signal with increasing rotation speeds.
-While the origins of this muting are physical, such behavior may not be seen in full 3D simulations of CCSNe due to the appearance of spiral modes of the SASI. 
+While the origins of this muting are physical, such behavior may not be seen in full 3D simulations of CCSNe due to the appearance of spiral modes of the SASI \citep{andresen:2018}. 
 %and low $T/|W|$ instabilities that can excite quadrupole deformations of the PNS
 
-We use the GR effective monopole potential of \citet{marek:2006} supplemented by a Newtonian multipole gravity solver with maximum spherical harmonic order $l=16$ \citep{couch:2013a, oconnor:2018}.
+In the present simulations, we use the GR effective monopole potential of \citet{marek:2006} supplemented by a Newtonian multipole gravity solver with maximum spherical harmonic order $l=16$ \citep{couch:2013a, oconnor:2018}.
 In order to validate this approximate approach for studying GWs from CCSNe, we compare our results to those of \citet{richers:2017}, who use a CFC GR approach.  We find that our simulations produce nearly identical GW bounce signals to those of \citet{richers:2017}.  
 
-This paper is organized as follows:  In Section \ref{sec:method} we present our methods and treatment of microphysics within our \texttt{FLASH} simulations.  We present a new method to applying initial rotation to the progenitor.  In Section \ref{sec:results}, we begin by addressing the shock front evolution for each of the progenitor masses and initial rotation velocities.  We then verify our gravitational treatment by comparing our bounce signal to general relativistic simulations.  We explore the effect of rotation on GWs emitted hundreds of milliseconds after core bounce and discuss implications on their detectability.  In Section \ref{sec:summary} we conclude and summarize the influence of rotation on GWs from initial collapse to 300 ms post bounce. 
+This paper is organized as follows:  In Section \ref{sec:method} we present our methods and treatment of microphysics within our \texttt{FLASH} simulations.  We present a new method to applying initial rotation to the progenitor.  Because each progenitor evolves at a different rate, we refrain from asserting which explode.  Rather, in Section \ref{sec:results}, we begin by addressing the shock front evolution for each of the progenitor masses and initial rotation velocities.  We then verify our gravitational treatment by comparing our bounce signal to general relativistic simulations.  We explore the effect of rotation on GWs emitted hundreds of milliseconds after core bounce and discuss implications on their detectability.  In Section \ref{sec:summary} we conclude and summarize the influence of rotation on GWs from initial collapse to 300 ms post bounce. 
 
 %__________________________________________________________________
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[scale=0.45]{figures/omega_vs_r.pdf}
-    \caption{The rotation profiles for five of the \citet{heger:2005} progenitors.  Each solid line represents \citeauthor{heger:2005}'s (\citeyear{heger:2005}) model and the dashed lines are Equation (\ref{eq:omega}) applied to the respective progenitor, with the appropriate differential rotation parameter.  }
-    \label{fig:ovsr}
-\end{figure}
-
 \section{Methods and Simulation Setup}
 \label{sec:method}
-We utilize the \texttt{FLASH} (version 4) multiscale, multiphysics adaptive mesh refinement (AMR) simulation framework for our simulations \citep{fryxell:2000,dubey:2009}.\footnote{http://flash.uchicago.edu/site/}  We employ a modified, general relativistic, effective potential \citep{marek:2006, oconnor:2018} incorporated into the multipole Poisson solver of \citet{couch:2013a}, where we retain spherical harmonic orders up through 16.   We utilize the SFHo equation of state (EOS) in all of our 15 simulations \citep{steiner:2013}.  Our grid setup is a 2D cylindrical geometry with the PARAMESH (v.4-dev) library for AMR  \citep{macneice:2000}.  The outer radial boundary is $10^4$ km, with nine levels of refinement, yielding a finest grid spacing of about 0.65 km.
+We utilize the \texttt{FLASH} (version 4) multiscale, multiphysics adaptive mesh refinement (AMR) simulation framework for our simulations \citep{fryxell:2000,dubey:2009}.\footnote{http://flash.uchicago.edu/site/}  We employ a modified, general relativistic, effective potential \citep{marek:2006, oconnor:2018} incorporated into the multipole Poisson solver of \citet{couch:2013a}, where we retain spherical harmonic orders up through 16.   We utilize the SFHo equation of state (EOS) in all of our 15 simulations \citep{steiner:2013}.  Our grid setup is a 2D cylindrical geometry with the PARAMESH (v.4-dev) library for AMR  \citep{macneice:2000}.  The outer boundary is $10^4$ km in all directions, with nine levels of refinement, yielding a finest grid spacing of about 0.65 km.
 The maximum allowed level of refinement is decreased as a function of spherical radius, $r$, in order to maintain a resolution aspect ratio, $\Delta x_i / r$, of about 0.01, corresponding approximately to an ``angular'' resolution of 0.5 degrees.
 
 %M1 section
-Neutrinos play a vital role in core-collapse supernovae.  Directly after collapse, they provide an avenue through which the PNS can cool.  As the shock propagates outwards, they also provide heating in the gain region that is crucial in reviving the explosion, according to the neutrino heating mechanism.  The opacity of the material to these outflowing neutrinos also must be carefully accounted for in an energy dependent way.  We incorporate a multidimensional, multispecies, energy dependent, two moment scheme with an analytic closure, or the so called M1 scheme.  Our implementation is based on \citet{oconnor:2015}, \citet{shibata:2011}, and \citet{cardall:2013}.  A detailed outline of the M1 implementation in \texttt{FLASH} is in \citet{oconnor:2018}.  In order to reduce computational cost to explore the wide parameter space for our study, we neglect velocity dependent neutrino transport and do not account for inelastic neutrino-electron scattering.
+Neutrinos play a vital role in core-collapse supernovae.  Directly after collapse, they provide an avenue through which the PNS can cool.  As the shock propagates outwards, they also provide heating in the gain region that is crucial in reviving the explosion, according to the neutrino heating mechanism.  The opacity of the material to these outflowing neutrinos must be carefully accounted for in an energy dependent way.  We incorporate a multidimensional, multispecies, energy dependent, two moment scheme with an analytic closure, or the so called M1 scheme.  Our implementation is based on \citet{oconnor:2015}, \citet{shibata:2011}, and \citet{cardall:2013}.  A detailed outline of the M1 implementation in \texttt{FLASH} is in \citet{oconnor:2018}.  In order to reduce computational cost to explore the wide parameter space for our study, we neglect velocity dependent neutrino transport and do not account for inelastic neutrino-electron scattering.
 We use 12 energy bins spaced logarithmically up to 250 MeV, and the full set of rates and opacities we use is described in \citet{oconnor:2017a}. 
 Specifically, we use the effective, many body, corrected rates
 for neutrino-nucleon, neutral current scattering of \citet{horowitz:2017}.  
@@ -164,18 +159,7 @@ We use the 12-, 20-, 40-, and 60-\Msun non-rotating, solar-metallicity progenito
 \subsection{Treatment of Rotation}
 
 
-\begin{table}[t]
-\begin{tabular}{c|c|c}
-Progenitor Mass [$M_\odot$] & Compactness & \textit{A}[1000 km] \\
-\hline
-12  & 0.0738 &         0.8123             \\
-20  & 0.2785 &         1.021            \\
-40  & 0.5341 &         1.282           \\
-60  & 0.1708 &         0.9112          
-\end{tabular}
-\caption{Listed values for ZAMS mass, compactness calculated from \citet{Suk:2016}, and differential rotation parameter \textit{A}.}
-\label{table:compact}
-\end{table}
+
 
 The progenitor models we use are evolved without rotation.
 At the start of core collapse, when we map the 1D models into our 2D grid, we apply an artificial rotation profile,
@@ -194,12 +178,11 @@ In order to demonstrate this, we fit the rotation profiles of the 20 progenitor 
 The models of \citet{heger:2005} include stars of ZAMS masses 12, 15, 20, 25, and 35 $M_{\odot}$, with various angular momentum transport parameters and initial ZAMS rotation rates.  
 Using the \texttt{curve\_fit} function (in the \texttt{scipy.optimize} library) available in \texttt{Python}, we obtain $A$ values that correspond to the most accurate fits of Equation (\ref{eq:omega}) to the rotation profiles of these models.  Figure \ref{fig:ovsr} displays the radial, rotation profile for five of the aforementioned progenitors, compared to our implementation of Equation (\ref{eq:omega}), with the best fit $A$ value.
 
-
 \begin{figure}[t]
     \centering
-    \includegraphics[scale=0.45]{figures/a_vs_compact.pdf}
-    \caption{Linear relation between differential rotation parameter, $A$, and compactness parameter of the inner 2.5 $M_\odot$, $\xi_{2.5}$.  The linear trend is constructed from the \citet{heger:2005} rotation profiles.  We then apply the relation to the compactness values from \citet{Suk:2016} to yield the differential rotation parameters.  The progenitor ZAMS masses are labeled in units of $M_\odot$ for each respective point.}
-    \label{fig:a_vs_comp}
+    \includegraphics[scale=0.45]{figures/omega_vs_r.pdf}
+    \caption{The rotation profiles for five of the \citet{heger:2005} progenitors.  Each solid line represents \citeauthor{heger:2005}'s (\citeyear{heger:2005}) model and the dashed lines are Equation (\ref{eq:omega}) applied to the respective progenitor, with the appropriate differential rotation parameter.  }
+    \label{fig:ovsr}
 \end{figure}
 
 The core compactness as introduced by \citet{oconnor:2011} is defined as,
@@ -209,6 +192,26 @@ The core compactness as introduced by \citet{oconnor:2011} is defined as,
 where we choose $M = 2.5 M_\odot$, and $R(M_{bary}=M) $ as the radius at which the internal baryonic mass is $2.5M_\odot$, at collapse.  
 Figure \ref{fig:a_vs_comp} shows the compactness parameters from the \citet{heger:2005} models (blue stars) plotted against their best fit $A$ values.
 A clear linear relation exists between $A$ and $\xi_{2.5}$.  
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=0.45]{figures/a_vs_compact.pdf}
+    \caption{Linear relation between differential rotation parameter, $A$, and compactness parameter of the inner 2.5 $M_\odot$, $\xi_{2.5}$.  The linear trend is constructed from the \citet{heger:2005} rotation profiles.  We then apply the relation to the compactness values from \citet{Suk:2016} to yield the differential rotation parameters.  The progenitor ZAMS masses are labeled in units of $M_\odot$ for each respective point.}
+    \label{fig:a_vs_comp}
+\end{figure}
+
+\begin{table}[h]
+\begin{tabular}{c|c|c}
+Progenitor Mass [$M_\odot$] & Compactness & \textit{A}[1000 km] \\
+\hline
+12  & 0.0738 &         0.8123             \\
+20  & 0.2785 &         1.021            \\
+40  & 0.5341 &         1.282           \\
+60  & 0.1708 &         0.9112          
+\end{tabular}
+\caption{Listed values for ZAMS mass, compactness calculated from \citet{Suk:2016}, and differential rotation parameter \textit{A}.}
+\label{table:compact}
+\end{table}
 
 Using this relationship, we calculate optimal $A$ values for the four \citet{Suk:2016} progenitors we use in this work (orange circles in Figure \ref{fig:a_vs_comp}).  
 The full list of progenitor masses, compactness values, and A's we use is given in Table ~\ref{table:compact}.  
